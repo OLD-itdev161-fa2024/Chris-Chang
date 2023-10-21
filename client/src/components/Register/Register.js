@@ -55,7 +55,8 @@ const Register = () => {
                     placeholder="Name"
                     name="name"
                     value={name}
-                    onChange={e => onChange(e)}>
+                    onChange={e => onChange(e)}
+                >
                 </input>
             </div>
             <div>
@@ -64,7 +65,8 @@ const Register = () => {
                     placeholder="Email"
                     name="email"
                     value={email}
-                    onChange={e => onChange(e)}>
+                    onChange={e => onChange(e)}
+                >
                 </input>
             </div>
             <div>
@@ -73,7 +75,8 @@ const Register = () => {
                     placeholder="Password"
                     name="password"
                     value={password}
-                    onChange={e => onChange(e)}>
+                    onChange={e => onChange(e)}
+                >
                 </input>
             </div>
             <div>

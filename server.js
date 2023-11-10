@@ -6,8 +6,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from 'config';
 import User from './models/User';
-import auth from './models/Post'
-import auth from './middleware/auth'
+import Post from './models/Post';
+import auth from './middleware/auth';
 
 
 
@@ -158,16 +158,13 @@ const returnToken = (user, res) => {
         }
     );
 };
-
-
-
 // Post endpoints
 /**
  * @route POST api/posts
  * @desc Create post
  */
 app.post(
-    '/api/posts'
+    '/api/posts',
     [
         auth,
         [
@@ -207,6 +204,21 @@ app.post(
         }
     }
 );
+
+/**
+ * @route GET api/posts
+ * @desc Get posts
+ */
+app.get('/api/posts', auth, async (req, res) => {
+    try {
+        const posts = await Post.find().sort({ date: -1 });
+
+        res.json(posts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
+});
 // Connection listener
 const port = 5000;
 app.listen(port, () => console.log(`Express server running on port ${port}`));

@@ -5,6 +5,7 @@ import './App.css';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 class App extends React.Component {
+  
   state = {
     data: null,
     token: null,
